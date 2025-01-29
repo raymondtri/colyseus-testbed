@@ -14,7 +14,13 @@ import { MyRoom } from "./rooms/MyRoom";
 export default config({
 
     options: {
-        devMode: true
+        devMode: true,
+        driver: new ValkeyDriver({
+            metadataSchema: {
+                region: 'string'
+            },
+            externalMatchmaker: true
+        }, redisStr)
     },
 
     initializeGameServer: (gameServer) => {
