@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/colyseus/create-colyseus#readme",
   "devDependencies": {
-    "@colyseus/loadtest": "github:raymondtri/colyseus#0.16-matchmaking",
-    "@colyseus/testing": "github:raymondtri/colyseus#0.16-matchmaking",
+    "@colyseus/loadtest": "../colyseus/packages/loadtest",
+    "@colyseus/testing": "../colyseus/packages/testing",
     "@types/express": "^4.17.1",
     "@types/mocha": "^10.0.1",
     "mocha": "^10.2.0",
@@ -31,11 +31,11 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@colyseus/monitor": "github:raymondtri/colyseus#0.16-matchmaking",
-    "@colyseus/playground": "github:raymondtri/colyseus#0.16-matchmaking",
-    "@colyseus/tools": "github:raymondtri/colyseus#0.16-matchmaking",
-    "@colyseus/valkey-driver": "github:raymondtri/colyseus#0.16-matchmaking",
-    "colyseus": "github:raymondtri/colyseus#0.16-matchmaking",
+    "@colyseus/monitor": "^0.16.0-preview.4",
+    "@colyseus/playground": "^0.16.0-preview.0",
+    "@colyseus/tools": "../colyseus/packages/tools",
+    "@colyseus/valkey-driver": "../colyseus/packages/drivers/valkey-driver",
+    "colyseus": "../colyseus/packages/core",
     "express": "^4.18.2"
   }
 }

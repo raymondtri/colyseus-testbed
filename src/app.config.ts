@@ -13,6 +13,10 @@ import { MyRoom } from "./rooms/MyRoom";
 
 export default config({
 
+    options: {
+        devMode: true
+    },
+
     initializeGameServer: (gameServer) => {
         /**
          * Define your room handlers:
