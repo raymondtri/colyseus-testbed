@@ -35,6 +35,7 @@
     "@colyseus/playground": "^0.16.0-preview.0",
     "@colyseus/tools": "../colyseus/packages/tools",
     "@colyseus/valkey-driver": "../colyseus/packages/drivers/valkey-driver",
+    "colyseus.js": "../colyseus.js/dist",
     "colyseus": "../colyseus/packages/core",
     "express": "^4.18.2"
   }

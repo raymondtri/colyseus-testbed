@@ -23,6 +23,9 @@ importers:
       colyseus:
         specifier: ../colyseus/packages/core
         version: link:../colyseus/packages/core
+      colyseus.js:
+        specifier: ../colyseus.js/dist
+        version: link:../colyseus.js/dist
       express:
         specifier: ^4.18.2
         version: 4.21.2
