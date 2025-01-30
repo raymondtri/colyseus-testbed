@@ -1,15 +1,14 @@
 import { Room, Client } from "@colyseus/core";
 import { MyRoomState } from "./schema/MyRoomState";
-import { AuthContext } from "colyseus";
+import { IncomingMessage } from "http";
 
 export class MyRoom extends Room<MyRoomState> {
   maxClients = 4;
 
   onCreate (options: any) {
     
-    // these additional options would usually be populated via environment variables from AWS, for instance
-    this.listing.region = "us-east-1";
-    this.listing.taskId = "task-1";
+    console.log("creating", options)
+
     
     this.setState(new MyRoomState());
 
@@ -32,13 +31,15 @@ export class MyRoom extends Room<MyRoomState> {
     console.log("room", this.roomId, "disposing...");
   }
 
-  onAuth(client: Client, options: any, context: AuthContext) {
+  /*
+  onAuth(client: Client, options: any, request?: IncomingMessage) {
     console.log("onAuth triggered")
     console.log(client)
     console.log(options)
-    console.log(context)
+    console.log(request)
 
     return true;
   }
+  */
 
 }

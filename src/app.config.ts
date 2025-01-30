@@ -11,6 +11,8 @@ const redisStr = `redis://127.0.0.1:6379`;
  */
 import { MyRoom } from "./rooms/MyRoom";
 
+let gameServerRef: any;
+
 export default config({
 
     options: {
@@ -22,7 +24,12 @@ export default config({
                 taskId: 'string',
             },
             externalMatchmaker: true
-        }, redisStr)
+        }, redisStr),
+        selectProcessIdToCreateRoom: async (roomName: string, clientOptions: any) => {
+            console.log(gameServerRef.driver)
+            
+            return gameServerRef.driver.ownProcessId;
+        }
     },
 
     initializeGameServer: (gameServer) => {
@@ -30,8 +37,13 @@ export default config({
          * Define your room handlers:
          */
         
-        gameServer.define('my_room', MyRoom);
+        // these additional options would usually be populated via environment variables from AWS, for instance
+        gameServer.define('my_room', MyRoom, {
+            region: 'us-east-1',
+            taskId: 'task-1',
+        });
 
+        gameServerRef = gameServer;
     },
 
     initializeExpress: (app) => {

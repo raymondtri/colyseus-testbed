@@ -1,0 +1,22 @@
+[1/30/2025, 12:27:56 PM] @colyseus/loadtest
+endpoint: ws://localhost:2567
+roomName: my_room
+numClients: 1
+logLevel: all
+output: C:\Users\Ray\Sites\colyseus-testbed\logs.txt
+[1/30/2025, 12:27:56 PM] Error: room.__init is not a function
+[1/30/2025, 12:28:10 PM] Finished. Summary:
+    Successful connections: 0
+    Failed connections: 1
+    Total errors: 1
+    Logs:
+    {red-fg}MatchMakeError: room.__init is not a function
+    at new MatchMakeError (C:\Users\Ray\Sites\colyseus-testbed\node_modules\.pnpm\colyseus.js@0.16.0-preview.25\node_modules\colyseus.js\src\Client.ts:14:14)
+    at Client.<anonymous> (C:\Users\Ray\Sites\colyseus-testbed\node_modules\.pnpm\colyseus.js@0.16.0-preview.25\node_modules\colyseus.js\src\Client.ts:219:37)
+    at step (C:\Users\Ray\Sites\colyseus-testbed\node_modules\.pnpm\tslib@2.8.1\node_modules\tslib\tslib.js:196:27)
+    at Object.next (C:\Users\Ray\Sites\colyseus-testbed\node_modules\.pnpm\tslib@2.8.1\node_modules\tslib\tslib.js:177:57)
+    at fulfilled (C:\Users\Ray\Sites\colyseus-testbed\node_modules\.pnpm\tslib@2.8.1\node_modules\tslib\tslib.js:167:62)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  code: 4213
+}{/red-fg}
+

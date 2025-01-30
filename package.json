@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "tsx watch src/index.ts",
-    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 500",
+    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 1 --output ./logs.txt",
     "monitor": "tsx monitor/monitor.ts",
     "process": "tsx matchmake/queueProcess.ts",
     "build": "npm run clean && tsc",
