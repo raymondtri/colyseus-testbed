@@ -15,9 +15,11 @@ export default config({
 
     options: {
         devMode: true,
+        publicAddress: "127.0.0.1:2567",
         driver: new ValkeyDriver({
             metadataSchema: {
-                region: 'string'
+                region: 'string',
+                taskId: 'string',
             },
             externalMatchmaker: true
         }, redisStr)
@@ -27,6 +29,7 @@ export default config({
         /**
          * Define your room handlers:
          */
+        
         gameServer.define('my_room', MyRoom);
 
     },
