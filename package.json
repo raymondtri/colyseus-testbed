@@ -9,9 +9,10 @@
   },
   "scripts": {
     "start": "tsx watch src/index.ts",
-    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 500",
+    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 1",
     "monitor": "tsx monitor/monitor.ts",
-    "process": "tsx matchmake/queueProcess.ts",
+    "queue": "tsx matchmake/queue.ts",
+    "process": "tsx matchmake/process.ts",
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
     "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
