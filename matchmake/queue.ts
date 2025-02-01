@@ -19,6 +19,9 @@ const driver = new ValkeyDriver({
 const queue = new Queue(driver, { 
   processFilterConditions: {
     region: 'us-east-1'
+  },
+  roomMaxClientMap: {
+    'my_room': 4
   }
  });
 
@@ -45,6 +48,8 @@ app.post('*', async (req, res) => {
   // TODO authentication
 
   const response = await queue.invokeMethod(method, roomNameOrID, clientOptions)
+
+  console.log(response)
 
   res.send(response);
 });
