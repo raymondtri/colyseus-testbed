@@ -15,7 +15,7 @@ export default config({
 
     options: {
         devMode: true,
-        publicAddress: "http://127.0.0.1:2567",
+        publicAddress: "127.0.0.1:2567",
         driver: new ValkeyDriver({
             metadataSchema: {
                 region: 'string',
