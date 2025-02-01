@@ -10,6 +10,9 @@ client.monitor((err, monitor) => {
     return;
   }
   console.log('Entering monitoring mode.');
+  
+  if(!monitor) throw new Error('Monitor is not defined');
+
   monitor.on('monitor', (time, args, source, database) => {
     console.log(`Time: ${time}, Command: ${args.join(' ')}, Source: ${source}, Database: ${database}`);
   });

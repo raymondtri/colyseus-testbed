@@ -13,6 +13,7 @@ const driver = new ValkeyDriver({
     region: 'string',
     taskId: 'string',
   },
+  processProperties: ['region', 'taskId'],
   externalMatchmaker: false
 }, redisStr)
 
@@ -24,25 +25,20 @@ const port = 3000;
 app.use(express.json());
 
 app.post('*', async (req, res) => {
-  const [ _, matchmake, method, roomName ] = req.url.split('/');
+  const [ _, matchmake, method, roomNameOrID ] = req.url.split('/');
   const clientOptions = req.body;
 
   console.log(method)
-  console.log(roomName)
+  console.log(roomNameOrID)
   console.log(clientOptions)
 
-  const reservation = await queue.queue({
-    roomName,
-    method,
-    clientOptions,
-    authOptions: { // TODO need to implement auth stuff so for now we just wrap? Realistically auth should be handled at the matchmaker process level at this point NOT the room
-      token: `matchmakerToken12345`
-    }
-  })
+  // TODO authentication
 
-  res.send(reservation);
+  const response = await queue.invokeMethod(method, roomNameOrID, clientOptions)
+
+  res.send(response);
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Queue Receiver is running on http://localhost:${port}`);
 });

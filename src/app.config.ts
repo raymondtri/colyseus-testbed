@@ -21,6 +21,7 @@ export default config({
                 region: 'string',
                 taskId: 'string',
             },
+            processProperties: ['region', 'taskId'],
             externalMatchmaker: true
         }, redisStr)
     },

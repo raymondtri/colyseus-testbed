@@ -8,6 +8,7 @@ const driver = new ValkeyDriver({
     region: 'string',
     taskId: 'string',
   },
+  processProperties: ['region', 'taskId'],
   externalMatchmaker: false
 }, redisStr)
 
