@@ -11,8 +11,8 @@
     "start": "tsx watch src/index.ts",
     "loadtest": "tsx loadtest/example.ts --room my_room --numClients 1",
     "monitor": "tsx monitor/monitor.ts",
-    "queue": "tsx matchmake/queue.ts",
-    "process": "tsx matchmake/process.ts",
+    "queue": "tsx watch matchmake/queue.ts",
+    "process": "tsx watch matchmake/process.ts",
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
     "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
@@ -40,7 +40,7 @@
     "@colyseus/valkey-driver": "../colyseus/packages/drivers/valkey-driver",
     "@colyseus/matchmaker": "../colyseus/packages/matchmaker",
     "colyseus": "../colyseus/packages/core",
-    "colyseus.js": "^0.16.0-preview.20",
+    "colyseus.js": "../colyseus.js",
     "express": "^4.18.2",
     "iovalkey": "^0.3.1"
   }

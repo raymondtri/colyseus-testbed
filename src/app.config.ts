@@ -15,13 +15,16 @@ export default config({
 
     options: {
         devMode: true,
-        publicAddress: "127.0.0.1:2567",
+        publicAddress: "http://127.0.0.1:2567",
         driver: new ValkeyDriver({
             metadataSchema: {
                 region: 'string',
                 taskId: 'string',
             },
-            processProperties: ['region', 'taskId'],
+            processProperties: {
+                region: 'us-east-1',
+                taskId: 'task-1',
+            },
             externalMatchmaker: true
         }, redisStr)
     },

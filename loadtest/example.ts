@@ -5,8 +5,8 @@ export async function main(options: Options) {
     // point the endpoint to the express server, or lambda, or whatever for external matchmaking
     options.endpoint = "http://localhost:3000";
 
-    const client = new Client(options.endpoint);
-    const room: Room = await client.joinOrCreate(options.roomName, {
+    const client = new Client(options.endpoint, undefined, true);
+    const room: Room = await client.create(options.roomName, {
         region: "us-east-1"
     });
 

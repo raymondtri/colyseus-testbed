@@ -8,11 +8,14 @@ const driver = new ValkeyDriver({
     region: 'string',
     taskId: 'string',
   },
-  processProperties: ['region', 'taskId'],
   externalMatchmaker: false
 }, redisStr)
 
-const queue = new Queue(driver);
+const queue = new Queue(driver, { 
+  processFilterConditions: {
+    region: 'us-east-1'
+  }
+ });
 
 const main = async () => {
   await queue.process()

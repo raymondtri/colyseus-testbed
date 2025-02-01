@@ -13,16 +13,26 @@ const driver = new ValkeyDriver({
     region: 'string',
     taskId: 'string',
   },
-  processProperties: ['region', 'taskId'],
   externalMatchmaker: false
 }, redisStr)
 
-const queue = new Queue(driver);
+const queue = new Queue(driver, { 
+  processFilterConditions: {
+    region: 'us-east-1'
+  }
+ });
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+
+// I really don't like this get available rooms lol but it's in the spec
+// you should be able to have more filters etc. on it
+app.get('*', async (req, res) => {
+  const [ _, matchmake, roomName ] = req.url.split('/');
+
+})
 
 app.post('*', async (req, res) => {
   const [ _, matchmake, method, roomNameOrID ] = req.url.split('/');
