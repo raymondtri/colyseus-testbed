@@ -15,8 +15,8 @@ exports.up = (pgm) => {
     replace: true
   }, `
     BEGIN
-      INSERT INTO process (id, publicAddress, secure, pathname, locked, taskId, clusterArn, metadata) 
-      VALUES (processId, publicAddress, secure, pathname, locked, metadata->>taskId, metadata->>clusterArn, metadata)
+      INSERT INTO process (id, "publicAddress", secure, pathname, locked, "taskId", "clusterArn", metadata) 
+      VALUES (processId, publicAddress, secure, pathname, locked, metadata->'taskId', metadata->'clusterArn', metadata)
       ON CONFLICT (id) DO NOTHING;
     END;
   `);
@@ -34,7 +34,8 @@ exports.down = (pgm) => {
     replace: true
   }, `
     BEGIN
-      INSERT INTO process (id, publicAddress, secure, pathname, locked, metadata) VALUES (processId, publicAddress, secure, pathname, locked, metadata)
+      INSERT INTO process (id, "publicAddress", secure, pathname, locked, metadata)
+      VALUES (processId, publicAddress, secure, pathname, locked, metadata)
       ON CONFLICT (id) DO NOTHING;
     END;
   `);

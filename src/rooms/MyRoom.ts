@@ -7,10 +7,6 @@ export class MyRoom extends Room<MyRoomState> {
 
   onCreate (options: any) {
     
-    // these additional options would usually be populated via environment variables from AWS, for instance
-    this.listing.region = "us-east-1";
-    this.listing.taskId = "task-1";
-    
     this.setState(new MyRoomState());
 
     this.onMessage("type", (client, message) => {

@@ -14,7 +14,8 @@ exports.up = (pgm) => {
     language: 'plpgsql'
   }, `
     BEGIN
-      INSERT INTO room (id, processId, name, clients, maxClients, locked, unlisted, private, eligibleForMatchmaking, metadata) VALUES (roomid, processid, name, clients, maxClients, locked, unlisted, private, eligibleForMatchmaking, metadata)
+      INSERT INTO room (id, "processId", name, clients, "maxClients", locked, unlisted, private, "eligibleForMatchmaking", metadata)
+      VALUES (roomId, processId, name, clients, maxClients, locked, unlisted, private, eligibleForMatchmaking, metadata)
       ON CONFLICT (id) DO NOTHING;
     END;
   `);
@@ -26,5 +27,5 @@ exports.up = (pgm) => {
  * @returns {Promise<void> | void}
  */
 exports.down = (pgm) => {
-  pgm.dropFunction('create_room', ['roomId varchar(9)', 'processId varchar(9)', 'name varchar(255)', 'clients integer', 'maxClients integer', 'locked boolean', 'unlisted boolean', 'private boolean', 'eligibleForMatchmaking boolean', 'metadata jsonb']);
+  pgm.dropFunction('insert_room', ['roomId varchar(9)', 'processId varchar(9)', 'name varchar(255)', 'clients integer', 'maxClients integer', 'locked boolean', 'unlisted boolean', 'private boolean', 'eligibleForMatchmaking boolean', 'metadata jsonb']);
 };

@@ -14,7 +14,8 @@ exports.up = (pgm) => {
     language: 'plpgsql'
   }, `
     BEGIN
-      INSERT INTO process (id, publicAddress, secure, pathname, locked, metadata) VALUES (processId, publicAddress, secure, pathname, locked, metadata)
+      INSERT INTO process (id, "publicAddress", secure, pathname, locked, metadata)
+      VALUES (processId, publicAddress, secure, pathname, locked, metadata)
       ON CONFLICT (id) DO NOTHING;
     END;
   `);

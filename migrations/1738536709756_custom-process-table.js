@@ -35,7 +35,7 @@ exports.up = (pgm) => {
  * @returns {Promise<void> | void}
  */
 exports.down = (pgm) => {
-  pgm.dropColumns('process', ['taskId', 'clusterArn'])
   pgm.dropIndex('process', 'process_task_id_index')
   pgm.dropIndex('process', 'process_cluster_arn_index')
+  pgm.dropColumns('process', ['taskId', 'clusterArn'])
 };

@@ -18,8 +18,10 @@ export default config({
         publicAddress: "127.0.0.1:2567",
         driver: new PostgresDriver(postgresStr, {
             processProperties: {
-                taskId: 'task-1',
-                clusterId: 'cluster-1',
+                metadata: {
+                    taskId: 'task-1',
+                    clusterArn: 'cluster-1'
+                }
             },
             externalMatchmaker: true
         })
