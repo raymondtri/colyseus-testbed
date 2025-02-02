@@ -16,7 +16,7 @@ exports.up = (pgm) => {
   }, `
     BEGIN
       INSERT INTO process (id, "publicAddress", secure, pathname, locked, "taskId", "clusterArn", metadata) 
-      VALUES (processId, publicAddress, secure, pathname, locked, metadata->'taskId', metadata->'clusterArn', metadata)
+      VALUES (processId, publicAddress, secure, pathname, locked, metadata->>'taskId', metadata->>'clusterArn', metadata)
       ON CONFLICT (id) DO NOTHING;
     END;
   `);
