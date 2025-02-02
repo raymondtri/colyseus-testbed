@@ -1,29 +1,15 @@
-import { Queue } from '@colyseus/matchmaker'
-import { ValkeyDriver } from '@colyseus/valkey-driver'
+import { PostgresDriver } from '@colyseus/postgresql-driver'
 import express from 'express';
+
+const postgresStr = "postgres://postgres:test@localhost:5432/default"
 
 function getBearerToken(authHeader: string) {
   return (authHeader && authHeader.startsWith("Bearer ") && authHeader.substring(7, authHeader.length)) || undefined;
 }
 
-const redisStr = `redis://127.0.0.1:6379`;
-
-const driver = new ValkeyDriver({
-  metadataSchema: {
-    region: 'string',
-    taskId: 'string',
-  },
+const driver = new PostgresDriver(postgresStr, {
   externalMatchmaker: false
-}, redisStr)
-
-const queue = new Queue(driver, { 
-  processFilterConditions: {
-    region: 'us-east-1'
-  },
-  roomMaxClientMap: {
-    'my_room': 4
-  }
- });
+});
 
 const app = express();
 const port = 3000;
@@ -47,11 +33,11 @@ app.post('*', async (req, res) => {
 
   // TODO authentication
 
-  const response = await queue.invokeMethod(method, roomNameOrID, clientOptions)
+  
 
-  console.log(response)
+  
 
-  res.send(response);
+  res.send('ok');
 });
 
 app.listen(port, () => {

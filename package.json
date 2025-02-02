@@ -15,7 +15,8 @@
     "process": "tsx watch matchmake/process.ts",
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
-    "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
+    "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000",
+    "migrate-default": "node-pg-migrate --migrations-dir ./node_modules/@colyseus/postgresql-driver/migrations"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -29,6 +30,7 @@
     "@types/express": "^4.17.1",
     "@types/mocha": "^10.0.1",
     "mocha": "^10.2.0",
+    "node-pg-migrate": "^7.9.0",
     "rimraf": "^5.0.0",
     "tsx": "^4.10.2",
     "typescript": "^5.0.4"
@@ -36,12 +38,13 @@
   "dependencies": {
     "@colyseus/monitor": "^0.16.0-preview.4",
     "@colyseus/playground": "^0.16.0-preview.0",
+    "@colyseus/postgresql-driver": "../colyseus/packages/drivers/postgresql-driver",
     "@colyseus/tools": "../colyseus/packages/tools",
-    "@colyseus/valkey-driver": "../colyseus/packages/drivers/valkey-driver",
-    "@colyseus/matchmaker": "../colyseus/packages/matchmaker",
     "colyseus": "../colyseus/packages/core",
     "colyseus.js": "../colyseus.js",
+    "dotenv": "^16.4.7",
     "express": "^4.18.2",
-    "iovalkey": "^0.3.1"
+    "iovalkey": "^0.3.1",
+    "pg": "^8.13.1"
   }
 }

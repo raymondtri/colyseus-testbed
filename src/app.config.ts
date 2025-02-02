@@ -2,9 +2,9 @@ import config from "@colyseus/tools";
 import { monitor } from "@colyseus/monitor";
 import { playground } from "@colyseus/playground";
 
-import { ValkeyDriver } from "@colyseus/valkey-driver";
+import { PostgresDriver } from "@colyseus/postgresql-driver";
 
-const redisStr = `redis://127.0.0.1:6379`;
+const postgresStr = "postgres://postgres:test@localhost:5432/default"
 
 /**
  * Import your Room files
@@ -16,17 +16,12 @@ export default config({
     options: {
         devMode: true,
         publicAddress: "127.0.0.1:2567",
-        driver: new ValkeyDriver({
-            metadataSchema: {
-                region: 'string',
-                taskId: 'string',
-            },
+        driver: new PostgresDriver(postgresStr, {
             processProperties: {
-                region: 'us-east-1',
                 taskId: 'task-1',
             },
             externalMatchmaker: true
-        }, redisStr)
+        })
     },
 
     initializeGameServer: (gameServer) => {

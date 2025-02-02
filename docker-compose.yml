@@ -1,12 +1,16 @@
 version: '3.8'
 
 services:
-  valkey:
-    image: valkey/valkey:8.0.2-alpine
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: default
     ports:
-      - "6379:6379"
+      - "5432:5432"
     volumes:
-      - valkey_data:/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  valkey_data:
+  postgres_data:
