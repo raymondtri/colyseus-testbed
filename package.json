@@ -16,7 +16,8 @@
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
     "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000",
-    "migrate-default": "node-pg-migrate --migrations-dir ./node_modules/@colyseus/postgresql-driver/migrations"
+    "migrate": "node-pg-migrate",
+    "load-migrations": "cp-cli ./node_modules/@colyseus/postgresql-driver/migrations ./migrations"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -29,6 +30,7 @@
     "@colyseus/testing": "../colyseus/packages/testing",
     "@types/express": "^4.17.1",
     "@types/mocha": "^10.0.1",
+    "cp-cli": "^2.0.0",
     "mocha": "^10.2.0",
     "node-pg-migrate": "^7.9.0",
     "rimraf": "^5.0.0",

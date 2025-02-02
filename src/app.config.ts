@@ -19,6 +19,7 @@ export default config({
         driver: new PostgresDriver(postgresStr, {
             processProperties: {
                 taskId: 'task-1',
+                clusterId: 'cluster-1',
             },
             externalMatchmaker: true
         })
