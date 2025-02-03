@@ -10,7 +10,11 @@ exports.shorthands = undefined;
  */
 exports.up = (pgm) => {
   pgm.createTable('queue', {
-    id: 'id',
+    id: {
+      type: 'varchar(9)',
+      notNull: true,
+      primaryKey: true
+    },
     method: {
       type: 'varchar(255)',
       notNull: true
@@ -26,8 +30,7 @@ exports.up = (pgm) => {
     },
     authOptions: {
       type: 'jsonb',
-      notNull: true,
-      default: '{}'
+      notNull: false
     },
     createdAt: {
       type: 'timestamp',

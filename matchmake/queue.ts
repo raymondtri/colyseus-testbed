@@ -8,7 +8,8 @@ function getBearerToken(authHeader: string) {
 }
 
 const driver = new PostgresDriver(postgresStr, {
-  externalMatchmaker: false
+  externalMatchmaker: false,
+  // createBehavior: 'queue'
 });
 
 const app = express();
@@ -33,11 +34,17 @@ app.post('*', async (req, res) => {
 
   // TODO authentication
 
-  
+  try {
+    const response = await driver.invokeMethod(method, roomNameOrID, clientOptions)
 
-  
+    console.log(response)
 
-  res.send('ok');
+    res.send(response);
+  } catch (e) {
+    console.error(e)
+    res.status(500).send(e.err);
+  }
+
 });
 
 app.listen(port, () => {

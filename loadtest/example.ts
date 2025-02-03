@@ -6,9 +6,7 @@ export async function main(options: Options) {
     options.endpoint = "http://localhost:3000";
 
     const client = new Client(options.endpoint, undefined, true);
-    const room: Room = await client.joinOrCreate(options.roomName, {
-        region: "us-east-1"
-    });
+    const room: Room = await client.create(options.roomName, {});
 
     console.log("joined successfully!");
 
