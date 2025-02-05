@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres:alpine
+    image: cleisonfmelo/postgres-pg-cron # make sure that you have pg-cron available on whatever postgres service you're running
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: test
